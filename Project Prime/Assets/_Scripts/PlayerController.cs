@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
         pitch = Mathf.Clamp(pitch,pitchBounds.x, pitchBounds.y);
 
-        transform.rotation = Quaternion.Euler(0, yaw, 0);
+        transform.eulerAngles = new Vector3(0, yaw, 0);
         eyes.localEulerAngles = new Vector3(pitch, 0, 0);
 
         if (Input.GetButtonDown("Cancel")) Cursor.lockState = CursorLockMode.None;

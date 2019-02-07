@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88abcccc29dfab542bcf6740b14cdc4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   sensitivity: 100
   pitchBounds: {x: -70, y: 70}
   eyes: {fileID: 59562359}
