@@ -16,9 +16,7 @@ public class Weapon : MonoBehaviour
 
     [Header("Spawned Objects")]
     [SerializeField]
-    private GameObject standardProjectile;
-    [SerializeField]
-    private GameObject chargedProjectile;
+    private GameObject projectile;
     [SerializeField]
     private LineRenderer beamRenderer;
     [SerializeField]
@@ -41,35 +39,20 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (chargeable)
+        if(fireType == FireType.Projectile)
         {
-            if (Input.GetButton("Fire 1"))
+            if(Input.GetButtonDown("Fire1"))
             {
-                chargeTime = Time.time + chargeRate;
-            }
-            if(Input.GetButtonUp("Fire 1"))
-            {
-                if (Time.time >= chargeTime) Instantiate(chargedProjectile, spawnPoint.position, spawnPoint.rotation);
-                else Instantiate(standardProjectile, spawnPoint.position, spawnPoint.rotation);
+                if(Time.time >= fireTime)
+                {
+                    Instantiate(projectile, spawnPoint);
+                    fireTime = Time.time + fireRate;
+                }
             }
         }
         else
         {
-            if(fireType == FireType.Projectile)
-            {
-                if(Input.GetButton("Fire 1"))
-                {
-                    if(Time.time >= fireTime)
-                    {
-                        Instantiate(standardProjectile, spawnPoint.position, spawnPoint.rotation);
-                        fireTime = Time.time + fireRate;
-                    }
-                }
-            }
-            else
-            {
-                RaycastFunctionality();
-            }
+            RaycastFunctionality();
         }
     }
 
