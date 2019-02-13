@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private bool chargeable;
     [SerializeField]
-    private float chargeRate;
+    private float beamSpeed;
     [SerializeField]
     private float fireRate;
 
@@ -34,6 +34,7 @@ public class Weapon : MonoBehaviour
     private float fireTime;
     private float chargeTime;
 
+    private float beamLength;
     
 
     // Update is called once per frame
@@ -58,11 +59,25 @@ public class Weapon : MonoBehaviour
 
     public virtual void RaycastFunctionality()
     {
-        RaycastHit hit;
-        if(Physics.Raycast(spawnPoint.position,spawnPoint.forward,out hit))
+        beamRenderer.SetPosition(0, spawnPoint.position);
+        //Debug.DrawLine(spawnPoint.position, spawnPoint.position + (spawnPoint.forward * 100), Color.red, 2);
+        if (Input.GetButton("Fire1"))
         {
-            beamRenderer.SetPosition(0, spawnPoint.position);
-            beamRenderer.SetPosition(1, hit.point);
+            beamLength += beamSpeed*Time.deltaTime;
+            RaycastHit hit;
+            if (Physics.Raycast(spawnPoint.position, spawnPoint.forward, out hit,beamLength))
+            {
+                beamRenderer.SetPosition(1, spawnPoint.position + spawnPoint.forward*1.25f);
+                beamRenderer.SetPosition(2, hit.point);
+            }
+            else
+            {
+                
+                beamRenderer.SetPosition(1, spawnPoint.position + spawnPoint.forward * 1.25f);
+                beamRenderer.SetPosition(2, spawnPoint.position + spawnPoint.forward * 100);
+            }
         }
+        else beamRenderer.SetPosition(1, spawnPoint.position);
+        beamLength = 0;
     }
 }

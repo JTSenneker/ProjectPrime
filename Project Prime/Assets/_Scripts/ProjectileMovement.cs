@@ -6,6 +6,7 @@ public class ProjectileMovement : MonoBehaviour
 {
     public float speed = 20;
     public float lifeTime = 5;
+    public float maxCharge = 5;
     public bool chargeable = true;
     private float chargeTime = 1;
 
@@ -18,6 +19,7 @@ public class ProjectileMovement : MonoBehaviour
         if (Input.GetButton("Fire1") && !fired)
         {
             chargeTime += Time.deltaTime;
+            if (chargeTime >= maxCharge) chargeTime = maxCharge;
             transform.localScale = new Vector3(chargeTime, chargeTime, chargeTime);
         }
         if (Input.GetButtonUp("Fire1")) fired = true;
