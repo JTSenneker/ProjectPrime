@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     {
 
         //body.velocity += movement;
-        body.MoveRotation(Quaternion.Euler(0, yaw, 0));
+        //body.MoveRotation(Quaternion.Euler(0, yaw, 0));
         //transform.eulerAngles = new Vector3(0, yaw, 0);
         eyes.localEulerAngles = new Vector3(pitch, 0, 0);
         if (Input.GetButtonDown("Jump"))
