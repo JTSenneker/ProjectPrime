@@ -14,7 +14,8 @@ public class CharacterController : MonoBehaviour
 
     public Transform position;
 
-    private bool gravity;
+    private bool needGravity = false;
+    public bool moveForward = false;
     public float gravityForce;
 
     public float xRotation;
@@ -32,30 +33,64 @@ public class CharacterController : MonoBehaviour
 
     public Vector2 pitchBounds;
 
-    
+    public float rayLength;
+    public float secondRayLength;
+    public float maxRayDistance;
 
     public Camera eyes;
 
+
+    private Vector3 moveH;
+    private Vector3 moveV;
+
+    private Rigidbody body;
     // Start is called before the first frame update
     void Start()
     {
-        
+        body = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 localDown = transform.rotation * -Vector3.up; //We get the localDown direction of the player regardless of rotation
+
+        Gravity(localDown);
+
+        RaycastHit groundHit;
+        if(Physics.Raycast(transform.position, localDown * rayLength, out groundHit, maxRayDistance))
+        {
+            needGravity = false;
+        }
+        else
+        {
+            needGravity = true;
+        }
+        Debug.DrawRay(transform.position, localDown * rayLength, Color.red);
 
         
+
+        RaycastHit forwardRay;
+        if(Physics.Raycast(transform.position, transform.forward* secondRayLength, out forwardRay))
+        {
+            
+        }
+        else
+        {
+           
+        }
+        Debug.DrawRay(transform.position, transform.forward * secondRayLength, Color.red);
         //Physics and character controller below
-        Vector3 localDown = transform.rotation * -Vector3.up; //We get the localDown direction of the player regardless of rotation
+
 
         float xMovement = Input.GetAxisRaw("Horizontal");
         float zMovement = Input.GetAxisRaw("Vertical");
 
-        Vector3 moveH = (transform.right * xMovement);
-        Vector3 moveV = (transform.forward * zMovement);
-
+         moveH = (transform.right * xMovement);
+       
+         moveV = (transform.forward * zMovement);
+        
+       
         position.position = (moveH + moveV).normalized * Time.deltaTime;
         position.position *= acceleration * Time.deltaTime;
         acceleration += (speed / mass) * Time.deltaTime;
@@ -79,5 +114,14 @@ public class CharacterController : MonoBehaviour
         // transform.eulerAngles = new Vector3(charXRotation, yRotation, charZRotation);
         transform.eulerAngles = new Vector3(0, yRotation, 0);
         eyes.transform.localEulerAngles = new Vector3(xRotation, eyesYRotation, eyesZRotation);
+    }
+
+    public void Gravity(Vector3 localDown)
+    {
+        if(needGravity)
+        {
+            print(localDown);
+            transform.position += (localDown * gravityForce);
+        }
     }
 }

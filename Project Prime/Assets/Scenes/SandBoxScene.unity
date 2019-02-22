@@ -745,12 +745,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916047979}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!20 &1014910640 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 4601258627409752027, guid: fe0bcec8cedb0ce43b3c428e5a8f6227,
-    type: 3}
-  m_PrefabInstance: {fileID: 4601258627738362219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1262190700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,7 +1471,7 @@ PrefabInstance:
     - target: {fileID: 4601258626171599217, guid: fe0bcec8cedb0ce43b3c428e5a8f6227,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.99
+      value: 3.27
       objectReference: {fileID: 0}
     - target: {fileID: 4601258626171599217, guid: fe0bcec8cedb0ce43b3c428e5a8f6227,
         type: 3}
@@ -1524,45 +1518,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1721964565, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
-      propertyPath: speed
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 1721964565, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
-      propertyPath: acceleration
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1721964565, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
-      propertyPath: mass
-      value: 2
+    - target: {fileID: 4601258626171599228, guid: fe0bcec8cedb0ce43b3c428e5a8f6227,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: 1721964565, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
       propertyPath: position
       value: 
       objectReference: {fileID: 1993433564}
     - target: {fileID: 1721964565, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
-      propertyPath: accelerationMax
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1721964565, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
-      propertyPath: accelerationCap
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1721964565, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
-      propertyPath: pitchBounds.x
-      value: -70
-      objectReference: {fileID: 0}
-    - target: {fileID: 1721964565, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
-      propertyPath: pitchBounds.y
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 1721964565, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
-      propertyPath: eyes
-      value: 
-      objectReference: {fileID: 1014910640}
-    - target: {fileID: 1721964565, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
       propertyPath: lookSpeed
-      value: 2
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 1721964565, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
+      propertyPath: gravityForce
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1721964565, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
+      propertyPath: rayLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1721964565, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
+      propertyPath: maxRayDistance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe0bcec8cedb0ce43b3c428e5a8f6227, type: 3}
