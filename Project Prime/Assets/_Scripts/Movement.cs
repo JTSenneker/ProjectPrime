@@ -50,18 +50,11 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.E))
-        {
-            body.MoveRotation(Quaternion.Euler(-100, 0, 0));
-            rotation = Quaternion.Euler(-100, 0, 0);
-            xRotation = -100;
-            //eyes.transform.localEulerAngles = new Vector3(-100, 0, 0);
-            print("Is this working");
-        }
+        
         Vector3 localDown = transform.rotation * -Vector3.up;
         Gravity(localDown);
         RaycastHit hit;
-
+        
         if(Physics.Raycast(transform.position, localDown * rayLength, out hit, maxRayDistance))
         {
 
@@ -71,6 +64,11 @@ public class Movement : MonoBehaviour
         {
             gravity = false;
         }
+
+        
+
+
+
         Debug.DrawRay(transform.position, localDown * rayLength, Color.red);
         //TODO FACTOR IN ACCELERATION
         //Get axis //TODO: Move into seperate method maybe?
@@ -105,7 +103,7 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         body.MoveRotation(Quaternion.Euler(0, yRotation, 0));
-        transform.eulerAngles = new Vector3(-100, yRotation, 0);
+        transform.eulerAngles = new Vector3(0, yRotation, 0);
         eyes.transform.localEulerAngles = new Vector3(xRotation, 0, 0);
         body.MovePosition(body.position + velocity * Time.deltaTime);
         

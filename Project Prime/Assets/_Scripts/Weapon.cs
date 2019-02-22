@@ -30,6 +30,7 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private float fireRate;
 
+    public GameObject worldRotator;
 
     private float fireTime;
     private float chargeTime;
@@ -44,8 +45,10 @@ public class Weapon : MonoBehaviour
         {
             if(Input.GetButtonDown("Fire1"))
             {
+
                 if(Time.time >= fireTime)
                 {
+                    print("FIRING");
                     Instantiate(projectile, spawnPoint);
                     fireTime = Time.time + fireRate;
                 }
@@ -67,6 +70,7 @@ public class Weapon : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(spawnPoint.position, spawnPoint.forward, out hit,beamLength))
             {
+                
                 beamRenderer.SetPosition(1, spawnPoint.position + spawnPoint.forward*1.25f);
                 beamRenderer.SetPosition(2, hit.point);
             }
