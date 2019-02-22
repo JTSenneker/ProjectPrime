@@ -81,7 +81,7 @@ public class CharacterController : MonoBehaviour
         }
         Debug.DrawRay(transform.position, transform.forward * secondRayLength, Color.red);
         //Physics and character controller below
-
+        
 
         float xMovement = Input.GetAxisRaw("Horizontal");
         float zMovement = Input.GetAxisRaw("Vertical");
