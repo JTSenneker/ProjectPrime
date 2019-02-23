@@ -54,7 +54,7 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         Vector3 localDown = transform.rotation * -Vector3.up; //We get the localDown direction of the player regardless of rotation
-
+        print(localDown);
         Gravity(localDown);
 
         RaycastHit groundHit;
@@ -71,9 +71,13 @@ public class CharacterController : MonoBehaviour
         
 
         RaycastHit forwardRay;
-        if(Physics.Raycast(transform.position, transform.forward* secondRayLength, out forwardRay))
+        if(Physics.Raycast(transform.position, transform.forward* secondRayLength, out forwardRay, maxRayDistance))
         {
-            
+            float angle = Vector3.Angle(forwardRay.normal, transform.forward);
+            body.freezeRotation = false;
+            transform.Rotate(-angle/2,0, 0);
+            needGravity = false;
+            //body.freezeRotation = true;
         }
         else
         {
@@ -120,7 +124,7 @@ public class CharacterController : MonoBehaviour
     {
         if(needGravity)
         {
-            print(localDown);
+           // print(localDown);
             transform.position += (localDown * gravityForce);
         }
     }
